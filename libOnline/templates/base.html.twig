@@ -22,7 +22,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ path('home') }}">
                     <img src="https://www.graphicsprings.com/filestorage/stencils/2f3bdb9733c4a68659dc2900a7595fea.png?width=500&height=500" width="30" height="30" class="d-inline-block align-top" alt="">
-                    Lib Online
+                    LibOnline
                 </a>
             </div>
 
@@ -51,12 +51,12 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="btn btn-default btn-info text-white mr-1 " href="{{ path('login') }}" role="button"><b>S'identifier</b> <span class="caret"></span></a>
-                        <a class="btn btn-default btn-warning mr-3" href="{{ path('registration.register') }}"><b>Créer un compte </b></a>
+                        <a class="btn btn-primary btn-sm btn-rounded-pill text-white mr-1 " href="{{ path('login') }}" role="button"><b>S'identifier</b> <span class="caret"></span></a>
+                        <a class="btn btn-warning btn-rounded-pill btn-sm mr-3" href="{{ path('registration.register') }}"><b>Créer un compte </b></a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="btn btn-secondary" href="{{ path('cart') }}">
+                    <a class="btn btn-secondary btn-sm" href="{{ path('cart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier <span
                                 class="badge bg-dark text-light">{{ app.request.session.get('cart') | length }}</span>
                     </a>
@@ -78,7 +78,7 @@
     <script src="https://kit.fontawesome.com/5f876598f4.js" crossorigin="anonymous"></script>
 
     <div class="footer navbar-fixed-bottom my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2019-2020 Lib Online</p>
+        <p class="mb-1">&copy; 2020 LibOnline</p>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="#">Privacy</a></li>
             <li class="list-inline-item"><a href="#">Terms</a></li>
