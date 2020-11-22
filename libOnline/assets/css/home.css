@@ -40,3 +40,14 @@
 .filters form h3 {
     font-size: 0.9rem;
 }
+
+.btn-link {
+    color: #6c757d;
+    display: block;
+    text-align: center;
+}
+
+.py-5 {
+    display: block;
+    text-align: center;
+}

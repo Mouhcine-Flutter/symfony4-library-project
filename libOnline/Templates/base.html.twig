@@ -10,8 +10,8 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous"
     >
-    <link rel="stylesheet" href="./public/build/app.css">
-    {% block stylesheets %} {% endblock %}
+
+    {% block stylesheets %}<link rel="stylesheet" href="assets/css/app.css">{% endblock %}
 </head>
 <body class="d-flex flex-column" style="min-height: 100vh;">
     {# Navbar #}
@@ -28,31 +28,30 @@
 
             {# Right side #}
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ml-auto navbar-right-top">
                 {% if app.user %}
-                    {% if app.user.roles[0] == 'ROLE_ADMIN' %}
-                        <li class="nav-item">
-                            <a class="nav-link mr-2 text-white" href="{{ path('app_admin_dashboard_index') }}">
-                                <i class="fa fa-cog fa-1x" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    {% endif %}
                     <li class="nav-item dropdown">
-                        <a href="#" class="dropdown-toggle mr-3 text-white" data-toggle="dropdown">
-                            <i class="fa fa-user fa-1x" aria-hidden="true"></i>
+                        <a href="#" class="dropdown-toggle mr-4 text-white" data-toggle="dropdown">
+                            <i class="fas fa-user-circle fa-lg"></i>
+                            <span class="user-name">{{ app.user.nom }} {{ app.user.prenom }}</span>
                         </a>
-                        <a class="btn btn-default btn-danger text-white mr-3" href="{{ path('app_logout') }}">
+                        <a class="btn btn-default btn-danger text-white btn-sm mr-3" href="{{ path('app_logout') }}">
                             Se déconnecter
                         </a>
-                        <ul class="dropdown-menu mx-auto">
-                            <li><a class="text-center ml-3" href="{{path('profile.edit', {id: app.user.id})}}">Mes informations</a></li>
-                            <li><a class="text-center ml-3" href="{{path('commandes_user', {'user': app.user.id})}}">Mes commandes</a></li>
-                        </ul>
+                        <div class="dropdown-menu dropdown-menu nav-user-dropdown">
+                            {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                                    <a class="dropdown-item" href="{{ path('app_admin_dashboard_index') }}">Administration</a>
+                            {% endif %}
+                            <a class="dropdown-item" href="{{path('profile.edit', {id: app.user.id})}}">Mes informations</a>
+                            <a class="dropdown-item" href="{{path('commandes_user', {'user': app.user.id})}}">Mes commandes</a>
+                        </div>
                     </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="btn btn-primary btn-sm btn-rounded-pill text-white mr-1 " href="{{ path('login') }}" role="button"><b>S'identifier</b> <span class="caret"></span></a>
-                        <a class="btn btn-warning btn-rounded-pill btn-sm mr-3" href="{{ path('registration.register') }}"><b>Créer un compte </b></a>
+                        {% if app.request.session.get('cart') | length == 0 %}
+                            <a class="btn btn-warning btn-rounded-pill btn-sm mr-3" href="{{ path('registration.register') }}"><b>Créer un compte </b></a>
+                        {% endif %}
                     </li>
                 {% endif %}
                 <li class="nav-item">

@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title 'Login' %}
+
+{# STYLESHEETS #}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
 
 {% block body %}
     <div class="container mt-5">
@@ -38,6 +44,9 @@
                             <div class="form-group mt-5">
                                 <button type="submit" class="btn btn-primary btn-block btn-lg"> S'identifier </button>
                             </div> <!-- form-group// -->
+                            {% if app.request.session.get('cart') | length > 0 %}
+                                <a class="btn-link" href="{{path('registration.register')}}">Créer un compte ?</a>
+                            {% endif %}
                         </form>
                     </article> <!-- card-body end .// -->
                 </div> <!-- card.// -->

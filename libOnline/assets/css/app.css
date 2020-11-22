@@ -8,3 +8,6 @@
     line-height: 5px;
 }
 
+.dropdown-toggle {
+    color: gray(50);
+}

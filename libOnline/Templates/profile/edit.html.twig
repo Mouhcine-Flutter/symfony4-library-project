@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'ProfilInfo' %}
+{% block title 'Profil' %}
 
 {% block stylesheets %}
     {#{{ parent() }}
@@ -9,9 +9,13 @@
 
 {% block body %}
 
-    <div class="container mt-xl-5">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-mt-4">
         <legend>Veuillez compléter votre profil</legend>
         {{ include('profile/_form.html.twig') }}
+        </div>
+    </div>
     </div>
 
 {% endblock %}
